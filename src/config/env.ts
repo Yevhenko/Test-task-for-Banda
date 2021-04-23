@@ -8,4 +8,6 @@ export const env = load({
   DB_USER: String,
   DB_PSWD: String,
   DB_PORT_EXT: Number,
+  ACCESS: String,
+  REFRESH: String,
 });

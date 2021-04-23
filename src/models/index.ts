@@ -1,8 +1,13 @@
-interface User {
+import { env } from '../config/env';
+
+export interface User {
   id: string | number;
-  password: string;
+  password?: string;
   idType: string;
-  token: string;
+  refreshToken?: string;
 }
 
-export = User;
+export const accessSecret = env.ACCESS;
+export const refreshSecret = env.REFRESH;
+export const accessTokenLife = 600;
+export const refreshTokenLife = 12000;
