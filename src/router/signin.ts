@@ -1,5 +1,5 @@
 import express from 'express';
-import jwt from 'jsonwebtoken';
+import * as jwt from 'jsonwebtoken';
 
 import { accessSecret, refreshSecret, accessTokenLife, refreshTokenLife } from '../models/index';
 
@@ -21,6 +21,8 @@ signin.post('/signin', async (req, res) => {
     if (user.id !== id || user.password !== password) {
       throw new Error('username or password is incorrect!');
     }
+
+    console.log(id);
 
     const accessToken = jwt.sign({ id }, accessSecret, { expiresIn: accessTokenLife });
     const refreshToken = jwt.sign({ id }, refreshSecret, { expiresIn: refreshTokenLife });

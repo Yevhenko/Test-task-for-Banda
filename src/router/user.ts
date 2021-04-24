@@ -1,5 +1,5 @@
 import express from 'express';
-import { createUser, getAllUsers } from '../handler';
+import { createUser, getAllUsers, getLatency } from '../handler';
 
 const user = express.Router();
 
@@ -20,6 +20,16 @@ user.post('/signup', async (req, res) => {
 user.get('/info', async (req, res) => {
   try {
     const response = await getAllUsers();
+
+    res.json(response);
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
+user.get('/latency', async (req, res) => {
+  try {
+    const response = await getLatency();
 
     res.json(response);
   } catch (error) {

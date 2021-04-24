@@ -4,6 +4,7 @@ import 'reflect-metadata';
 import express from 'express';
 import epl from 'express-pino-logger';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 
 import { logger } from './logger';
 import router from './router';
@@ -15,6 +16,8 @@ const port = env.APP_PORT;
 
 app.use(epl({ logger: logger }));
 
+app.use(cors());
+app.options('*', cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 

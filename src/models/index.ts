@@ -3,7 +3,7 @@ import { env } from '../config/env';
 export interface User {
   id: string;
   password?: string;
-  idType: string;
+  idType?: string;
   refreshToken?: string;
 }
 

@@ -5,8 +5,11 @@ import { User as Body } from './models/index';
 
 export const createUser = async (body: Body): Promise<Body> => {
   try {
-    if (typeof body.id === 'string') body.idType = 'email';
-    body.idType = 'phone';
+    if (isNaN(Number(body.id)) === true) {
+      body.idType = 'email';
+    } else {
+      body.idType = 'phone';
+    }
 
     const user = getRepository(User).create(body);
 
@@ -23,7 +26,7 @@ export const getUser = async (body: Body): Promise<Body | null> => {
   try {
     const user = await getRepository(User).findOne({
       where: {
-        username: body.id,
+        id: body.id,
         password: body.password,
       },
     });
@@ -73,7 +76,7 @@ export const deleteToken = async (params: any, query: any): Promise<string> => {
   try {
     const entityManager = getManager();
     if (params === true) await entityManager.query(`UPDATE User SET "refreshToken" = NULL`);
-    await entityManager.query(`UPDATE User SET "refreshToken" = NULL WHERE "id" = '${query}'`);
+    await entityManager.query(`UPDATE User SET "refreshToken" = CAST(NULL As NULL WHERE "id" = '${query.id}'`);
 
     return 'Token has been deleted';
   } catch (error) {
