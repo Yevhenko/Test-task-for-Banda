@@ -3,7 +3,7 @@ import { Entity, Column, CreateDateColumn, UpdateDateColumn, PrimaryColumn } fro
 @Entity()
 class User {
   @PrimaryColumn()
-  id!: number | string;
+  id!: string;
 
   @Column({ length: 100 })
   password!: string;
