@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import jwt from 'jsonwebtoken';
+import * as jwt from 'jsonwebtoken';
 
 import { accessSecret } from '../models/index';
 

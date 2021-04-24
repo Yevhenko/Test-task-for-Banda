@@ -7,9 +7,7 @@ logout.get('/logout/:all', async (req, res) => {
   try {
     const { params, query } = req;
 
-    const userId = Number(query);
-
-    await deleteToken(params, userId);
+    await deleteToken(params, query);
 
     res.send('token has been removed');
   } catch (error) {

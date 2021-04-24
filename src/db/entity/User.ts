@@ -6,12 +6,12 @@ class User {
   id!: string;
 
   @Column({ length: 100 })
-  password!: string;
+  password: string;
 
   @Column({ length: 100 })
-  idType: string;
+  idType?: string;
 
-  @Column({ length: 100 })
+  @Column({ length: 1000 })
   refreshToken: string;
 
   @CreateDateColumn()
