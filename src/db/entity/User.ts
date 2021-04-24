@@ -1,9 +1,9 @@
-import { Entity, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, Column, CreateDateColumn, UpdateDateColumn, PrimaryColumn } from 'typeorm';
 
 @Entity()
 class User {
-  @Column()
-  id!: number | string;
+  @PrimaryColumn()
+  id!: string;
 
   @Column({ length: 100 })
   password!: string;
@@ -12,7 +12,7 @@ class User {
   idType: string;
 
   @Column({ length: 100 })
-  token: string;
+  refreshToken: string;
 
   @CreateDateColumn()
   createdAt!: Date;
